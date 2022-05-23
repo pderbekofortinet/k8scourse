@@ -20,6 +20,8 @@ spec:
    volumeMounts:
    - name: app-storage
      mountPath: /storage
+ nodeSelector:
+  db: run
 
  volumes:
   - name: app-storage
