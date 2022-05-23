@@ -1,21 +1,20 @@
-apiVersion: v1 # K8S API Version
+apiVersion: apps/v1 # K8S API Version
 kind: ReplicaSet  # Object Type
 metadata:
  name: lab10rs
  labels:
   app: boo
-  
+
 spec:
  replicas: 3
  selector:
   matchLabels:
-   app:boo
+   app: boo
  template:
   metadata:
    labels:
-    app:boo
-  containers:
-   - name: animal
-     image: supergiantkir/animals:bear
-     ports:
-   - containerPort: 80
+    app: boo
+  spec:
+   containers:
+    - name: animal
+      image: supergiantkir/animals:bear
