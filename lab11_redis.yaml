@@ -1,0 +1,22 @@
+apiVersion: v1 # K8S API Version
+kind: Pod  # Object Type
+metadata:
+ name: redis
+ labels:
+  app: redis
+spec:
+ affinity:
+  podAntiAffinity:
+   requiredDuringSchedulingIgnoredDuringExecution:
+   - labelSelector:
+       matchExpressions:
+       - key: app
+         operator: In
+         values:
+         - mysql
+     topologyKey: "kubernetes.io/hostname"
+ containers:
+ - name: animal
+   image: supergiantkir/animals:bear
+   ports:
+   - containerPort: 80
